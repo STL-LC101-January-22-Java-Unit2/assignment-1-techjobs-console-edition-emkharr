@@ -32,9 +32,9 @@ public class JobData {
         ArrayList<String> values = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(field).toLowerCase();
+            String aValue = row.get(field);
 
-            if (!values.contains(aValue.toLowerCase())) {
+            if (!values.contains(aValue)) {
                 values.add(aValue);
             }
         }
@@ -74,9 +74,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column).toLowerCase();
+            String aValue = row.get(column);
 
-            if (aValue.toLowerCase().contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -91,7 +91,6 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-        String valueLower = value.toLowerCase();
         // load data, if not already loaded
         loadData();
 
@@ -100,9 +99,9 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
             for (Map.Entry<String, String> i: row.entrySet()) {
                 String aValue = i.getValue();
-                if (aValue.toLowerCase().contains(valueLower)) {
-                    String jobName = row.get("name");
-                    String jobEmployer = row.get("employer");
+                if (aValue.toLowerCase().contains(value.toLowerCase())) {
+//                    String jobName = row.get("name");
+//                    String jobEmployer = row.get("employer");
                     if (!jobs.contains(row)) {
                         jobs.add(row);
                     } else {

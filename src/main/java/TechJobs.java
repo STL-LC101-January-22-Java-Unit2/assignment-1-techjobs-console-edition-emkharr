@@ -123,16 +123,16 @@ public class TechJobs {
         String coreCompetency;
 
             if (someJobs.size()== 0 || someJobs == null) {
-                System.out.println("No results found :(");
+                System.out.println("No Results");
             } else {
                 for (HashMap<String, String> i : someJobs) {
-                    System.out.println("*****");
+                    System.out.println("\n*****");
                     for (Map.Entry<String, String> j: i.entrySet()) {
                         String title = j.getKey();
                         String job = j.getValue();
-                        System.out.println(title + ":" + job);
+                        System.out.println(title + ": " + job);
                     }
-                    System.out.println("***** \n");
+                    System.out.println("*****");
             }
         }
     }
