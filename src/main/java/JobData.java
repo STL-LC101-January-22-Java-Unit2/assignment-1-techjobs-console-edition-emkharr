@@ -143,4 +143,13 @@ public class JobData {
         }
     }
 
+//    public static findByValue() {
+        //enable searching in all columns
+        //prevent duplicates if same keyword in multiple columns
+        //use loops, don't hard code columns to search and run each column individually
+        //will look similar to findByColumnAndValue
+        //call from somewhere in Main
+
+//    }
+
 }
