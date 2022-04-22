@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -94,12 +91,36 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
+        String valueLower = value.toLowerCase();
         // load data, if not already loaded
         loadData();
 
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            for (Map.Entry<String, String> i: row.entrySet()) {
+                String aValue = i.getValue();
+                if (aValue.toLowerCase().contains(valueLower)) {
+                    String jobName = row.get("name");
+                    String jobEmployer = row.get("employer");
+                    if (!jobs.contains(row)) {
+                        jobs.add(row);
+                    } else {
+                        continue;
+                    }
+                }
+
+            }
+        }
+
+
+
+
+
+//if job.includes search term then continue, else add
+
         // TODO - implement this method
-        return null;
+        return jobs;
     }
 
     /**
@@ -142,14 +163,5 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
-//    public static findByValue() {
-        //enable searching in all columns
-        //prevent duplicates if same keyword in multiple columns
-        //use loops, don't hard code columns to search and run each column individually
-        //will look similar to findByColumnAndValue
-        //call from somewhere in Main
-
-//    }
 
 }

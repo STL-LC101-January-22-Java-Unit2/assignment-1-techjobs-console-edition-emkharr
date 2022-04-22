@@ -133,7 +133,6 @@ public class TechJobs {
                         System.out.println(title + ":" + job);
                     }
                     System.out.println("***** \n");
-
             }
         }
     }
